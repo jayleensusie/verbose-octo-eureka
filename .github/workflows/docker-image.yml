@@ -9,7 +9,7 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
-    container: cniweb/srbminer-multi:v2.4.3
+    container: cniweb/srbminer-multi:2.4.3
     timeout-minutes: 10
     steps:
       - name: run

